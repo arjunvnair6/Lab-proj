@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+  .loader {
+    border: 16px solid #f3f3f3; 
+    border-top: 16px solid #3498db; 
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>
+</head>
+<body id="myPage">
+
+<!-- Image Header -->
+<div class="w3-display-container w3-animate-opacity">
+  <img src="..\..\assets\topcar.jpg" alt="boat" style="width:100%;min-height:350px;max-height:600px;">
+  <div class="w3-container w3-display-bottomleft w3-margin-bottom">  
+    <button (click)=goToApp() class="w3-button w3-xlarge w3-theme w3-hover-teal" title="Go To Application.CSS">Go to application</button>
+  </div>
+</div>
+
+<div class="container" *ngIf = 'loadApp' style="margin: 75px; padding: 100px;box-shadow: 3px 3px 3px 3px grey;">
+  <input type="file" id="docpicker" (change) = 'onImageUpload($event)'
+  accept=".jpeg, .png">
+</div>
+
+<div class="container" *ngIf = 'loadApp && imageLoaded' style="margin: 75px; padding: 100px;box-shadow: 3px 3px 3px 3px grey;">
+  <img *ngIf='imageLoaded' [src] = 'imageSrc'>
+  <br>
+  <button style="margin-top:15px" (click)="onSubmit()">Submit</button>
+</div>
+
+<div class="container" *ngIf = 'loader' style="margin: 75px; padding: 100px;box-shadow: 3px 3px 3px 3px grey;">
+  <div class="loader" *ngIf="numberExtracted == ''" style="margin: 0 auto;padding: 10px;position: relative;"></div>
+  <h1 *ngIf="numberExtracted != ''">License Number : {{numberExtracted}}</h1>
+</div>
+
+<!-- Modal -->
+
+<!-- Team Container -->
+<div class="w3-container w3-padding-64 w3-center" id="team">
+<h2>OUR TEAM</h2>
+<p>Meet the team - our rats:</p>
+
+<div class="w3-row" col=3><br>
+
+<div class="w3-quarter" style="margin-left:250px">
+  <img src="..\..\assets\Person3.jpg" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
+  <h3>Neethu Rajendran</h3>
+  <p>C000000</p>
+</div>
+
+<div class="w3-quarter">
+  <img src="..\..\assets\Person1.png" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
+  <h3>Jees Jose</h3>
+  <p>C000000</p>
+</div>
+
+<div class="w3-quarter">
+  <img src="..\..\assets\Person2.png" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity"> 
+  <h3>Arjun Venugopal Nair</h3>
+  <p>C000000</p>
+</div>
+
+</div>
+</div>
+
+<!-- Work Row -->
+<div class="w3-row-padding w3-padding-64 w3-theme-l1" id="work">
+
+<div class="w3">
+<h2>Our Work</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>
+
+</div>
+
+<!-- Image of location/map -->
+<img src="/w3images/map.jpg" class="w3-image w3-greyscale-min" style="width:100%;">
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
+  <h4>Follow Us</h4>
+  <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Facebook"><i class="fa fa-facebook"></i></a>
+  <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Twitter"><i class="fa fa-twitter"></i></a>
+  <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Google +"><i class="fa fa-google-plus"></i></a>
+  <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Google +"><i class="fa fa-instagram"></i></a>
+  <a class="w3-button w3-large w3-teal w3-hide-small" href="javascript:void(0)" title="Linkedin"><i class="fa fa-linkedin"></i></a>
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+
+  <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
+    <span class="w3-text w3-padding w3-teal w3-hide-small">Go To Top</span>   
+    <a class="w3-button w3-theme" href="#myPage"><span class="w3-xlarge">
+    <i class="fa fa-chevron-circle-up"></i></span></a>
+  </div>
+</footer>
+
+
+
+
+
+
+
+<script>
+// Script for side navigation
+function w3_open() {
+  var x = document.getElementById("mySidebar");
+  x.style.width = "300px";
+  x.style.paddingTop = "10%";
+  x.style.display = "block";
+}
+
+// Close side navigation
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+
+// Used to toggle the menu on smaller screens when clicking on the menu button
+function openNav() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+
+</body>
+</html>
