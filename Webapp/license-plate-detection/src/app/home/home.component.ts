@@ -35,6 +35,7 @@ export class HomeComponent implements OnInit {
     }
   }
   onSubmit(){
+    this.numberExtracted = ''
     this.loader = true
     this.resultbar = true
     this.machineLearningService.machineLearningResult(this.imageFile).subscribe((res: any) => {

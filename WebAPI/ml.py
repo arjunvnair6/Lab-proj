@@ -8,7 +8,7 @@ import plotly.express as px
 from PIL import Image
 import pytesseract as pt
 import plotly
-
+import random
 
 class ML_Model:
     def image_preprocessing(self,img):
@@ -16,7 +16,9 @@ class ML_Model:
         image_org = Image.open(img)
         image = np.array(image_org,dtype=np.uint8)
         image1 = image_org.resize((224,224),Image.ANTIALIAS)
-
+        filename = 'image_' + str(random.randint(10000 , 100000))
+        image1.save(filename, "png")
+        image1 = load_img(filename,target_size=(224,224))
         image_arr_224 = img_to_array(image1)/255.0 
         h,w,d = image.shape
         test_arr = image_arr_224.reshape(1,224,224,3)
